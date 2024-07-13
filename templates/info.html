@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Page</title>
+    <link rel="stylesheet" href="template1.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #002f5f;
+            text-decoration: underline;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        strong {
+            color: #0056b3;
+        }
+
+        img {
+            max-width: 100px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h11">Information Page</h1>
+
+    <p><b>Find more information about our services and policies:</b></p>
+
+    <ul>
+        <li><a href="{{ url_for('Private_Policy') }}" target="_blank">Privacy Policy</a></li>
+        <li><a href="{{ url_for('Terms_of_Use') }}" target="_blank">Terms of Service</a></li>
+    </ul>
+
+    <p><strong><b>Accepted Payment Methods:</b></strong></p>
+    <p><img src="{{ url_for('static', filename='img/paypal.png') }}" alt="Visa Logo"></p>
+
+	
+</body>
+</html>

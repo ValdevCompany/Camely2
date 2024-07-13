@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+       
+
+        .product-container {
+            max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание содержимого по центру по горизонтали */
+    text-align: center;
+        }
+
+        .product-image {
+            max-width: 50%;
+			width = 200px;
+            height: 300px;
+			margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #45a049;
+        }
+		  .product-attributes {
+            margin-top: 20px;
+        }
+
+        .attribute {
+            margin-bottom: 10px;
+        }
+		.reviews-container {
+            margin-top: 20px;
+        }
+
+        .review {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+        }
+
+        .review-text {
+            margin-top: 10px;
+        }
+
+        .review-images {
+            margin-top: 10px;
+        }
+
+        .review-image {
+            max-width: 60px;
+            height: auto;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="product-container">
+        <img src="{{ url_for('static', filename='img/pitcher.png') }}" alt="Товар" class="product-image">
+        <h2 class="product-title">Pitcher</h2>
+        <p class="product-description">Pitcher for coffee</p>
+        <p class="product-price">Price: $18</p>
+        
+		<form action="http://127.0.0.1:5000/pay2" method="get" target="_blank">
+            <button type="submit" class="add-to-cart-button">Buy Now</button>
+        </form>
+		<div class="product-attributes">
+            <div class="attribute"><strong>Brand:</strong>KONCO</div>
+            <div class="attribute"><strong>Origin:</strong> China</div>
+            <div class="attribute"><strong>Material:</strong> Stainless steel</div>
+            <div class="attribute"><strong>Function:</strong>Milk Pitcher, Cream Maker </div>
+			<div class="attribute"><strong>Volume:</strong>300ml</div>
+        </div>
+		 
+			
+
+        </div>
+    </div>
+
+</body>
+</html>

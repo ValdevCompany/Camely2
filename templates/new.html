@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta name="viewport" content="width=device-width, Initial-scale=1"> 
+</head> 
+<body> 
+<!-- Замените "test" на идентификатор клиента приложения для вашей собственной песочницы --> 
+<script src="https://www.paypal.com/sdk/js?client-id= Ab6T7ndj0b7iXEKN-VhVK2... ¤cy= USD "></script> 
+<!-- Настройка элемент-контейнер для кнопки --> 
+<div id="paypal-button-container"></div> 
+<script> 
+    paypal.Buttons({ 
+        // Устанавливает транзакцию при нажатии кнопки оплаты 
+        createOrder: (data, action) => { 
+            return action.order.create({ 
+                Purchase_units: [{ 
+                    sum: { 
+                        value: '2' // Также может ссылаться на переменную или функцию 
+                    } 
+                }] 
+            }); 
+        }, 
+        // Завершаем транзакцию после одобрения плательщика 
+        onApprove: (data, action) => { 
+            return action.order.capture().then(function (orderData) { 
+                // Успешный захват! Для целей разработки/демо: 
+                console .log('Capture result', orderData, JSON . stringify(orderData, null, 2)); 
+                const транзакции = orderData.purchase_units[0].payations.captures[0]; 
+                alert(`Транзакция ${transaction.status}: ${transaction.id}\n\nСм. консоль все доступные реквизиты`); 
+                // Когда все будет готово к запуску, удалите предупреждение и отобразите сообщение об успехе на этой странице. Например: 
+                // const element = document.getElementById('paypal-button-container'); 
+                // element.innerHTML = '<h3>Спасибо за оплату!</h3>'; 
+                // Или перейти на другой URL: action.redirect('thank_you.html'); 
+            }); 
+        } 
+    }).render('#paypal-button-container'); 
+</script> 
+</body> 
+</html>

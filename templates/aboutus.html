@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+  
+  <style>
+  body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #008080; /* Dark teal color */
+}
+
+img {
+  border-radius: 10px; /* Adds a slight border radius to the image */
+}
+
+p {
+  max-width: 600px;
+  margin: 20px auto;
+  line-height: 1.5;
+}
+
+h2 {
+  color: #008080; /* Dark teal color */
+}
+
+div {
+  margin: 20px 0;
+}
+
+a {
+  margin: 0 10px;
+}
+
+/* Social media icons */
+img[src$="inst.jpg"],
+img[src$="facebook.png"] {
+  border-radius: 50%; /* Makes the social media icons circular */
+}
+
+/* Hover effect for social media icons */
+a:hover img[src$="inst.jpg"],
+a:hover img[src$="facebook.png"] {
+  opacity: 0.7;
+}
+/* Добавляем стиль для анимации при нажатии на картинки-ссылки */
+a img {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Добавляем стиль для изменения размера при нажатии */
+a:hover img {
+  transform: scale(1.1);
+}
+
+  </style>
+
+	
+  <title>About us</title>
+  
+   <style>
+    body {
+      text-align: center; /* Центрирование текста внутри body */
+    }
+  </style>
+  
+ </head>
+ <body>
+  <h1>About us</h1>
+	<img src="{{ url_for('static', filename='camel.png') }}" alt="Camely" width="200px" height = "150px">
+  
+  <p readonly="readonly"><b>Welcome to our  Coffee Accessories Shop, where we specialize in delivering quality coffee-related products.<br/> Our mission is to enhance your coffee experience through a curated selection of premium and innovative accessories.<br/> Whether it's brewing equipment, stylish mugs, or the latest trends in coffee gadgets, we've got you covered.<br/> Discover the perfect accessories to elevate your coffee ritual and enjoy hassle-free shopping with us.</b></p>
+   <h2>Our Contacts</h2>
+  <div>
+  
+   <a href = "https://www.instagram.com/camely_dropshipping/"  target = "_blank" ><img src="{{ url_for('static', filename='insta.jpg') }}" alt="instagram" width = "55px" height = "55px" ></a>
+   <a href = "https://www.facebook.com/profile.php?id=100048137467296"  target = "_blank" ><img src="{{ url_for('static', filename='facebook.png') }}" alt="facebook" width = "57px" height = "55px" target = "_blank" ></a>
+  </div>
+ 
+ </body>
+</html>

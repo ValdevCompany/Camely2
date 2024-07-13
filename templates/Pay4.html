@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+
+        .payment-option {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .payment-option img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .payment-option h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #343a40;
+        }
+
+        .payment-option p {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .payment-option.selected {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .payment-option.selected:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .btn-pop {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        /* Styles for PayPal button */
+        .paypal-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-option">
+        <img src="{{ url_for('static', filename='img/paypal.png') }}" alt="PayPal">
+        <h4>PayPal</h4>
+        <p>Fast and easy payments with PayPal</p>
+    </div>
+
+    <form action="/process_payment" method="POST">
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select class="form-control" id="country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="US">United States</option>
+                <option value="DE">Germany</option>
+                <option value="FR">France</option>
+                <option value="GB">United Kingdom</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Full Address with Region and City</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        <div class="form-group">
+            <label for="postcode">Postal Code</label>
+            <input type="text" class="form-control" id="postcode" name="postcode" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required>
+        </div>
+        <input type="hidden" id="payment_index" name="payment_index" value="1"> <!-- Hidden input for payment index -->
+        <button type="submit" class="btn btn-primary btn-block btn-pop">Send data for seller</button> <!-- Example payment button -->
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Script to handle payment option selection
+    $(document).ready(function() {
+        $(".payment-option").click(function() {
+            $(".payment-option").removeClass("selected");
+            $(this).addClass("selected");
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E0FFF0;
+        }
+
+        .shop-title {
+            text-align: center;
+            color: #000;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 50px 0;
+            line-height: 1.2;
+        }
+
+        .footer {
+            background-color: #E0FFF0;
+            color: #000;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #ddd;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .purchase-history-link {
+            position: absolute;
+            top: 50px;
+            right: 40px;
+            transform: translateX(-50%);
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .search-results a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .search-results a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E0FFF0;">
+    <div class="container">
+        <a class="navbar-brand" href="">
+            <img src="/static/lotot.jpg" alt="Логотип" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('Goods') }}">	Goods</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('Info') }}">Info</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('Support') }}">Support</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('About_us') }}">About_us</a></li>
+            </ul>
+        </div>
+        
+        <!-- Картинка и ссылка на страницу истории покупок -->
+        <a class="purchase-history-link" href="{{ url_for('History') }}">
+            <img src="{{ url_for('static', filename='img/historys.png') }}" alt="История покупок" style="width: 30px;">
+        </a>
+    </div>
+</nav>
+
+<!-- Search -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 w-75" type="search" placeholder="Поиск" aria-label="Поиск" id="searchInput" onfocus="showSearchResults()">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="search-results" id="searchResults">
+                <a href="{{ url_for('Second') }}">Pitcher</a>
+                <a href="{{ url_for('First') }}">Reusable Coffee Capsules</a>
+                <a href="{{ url_for('Third') }}">Portable Coffee Grinder</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Title -->
+<div class="shop-title">
+    Coffee Accessories<br>
+    Shop
+</div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <span>&copy; 2024 Coffee Accessories Shop. All rights reserved.</span>
+    </div>
+</footer>
+
+<!-- Bootstrap JS и зависимости -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function showSearchResults() {
+        document.getElementById('searchResults').style.display = 'block';
+    }
+
+    // Скрыть результаты поиска при клике вне области поиска
+    document.addEventListener('click', function(event) {
+        var searchInput = document.getElementById('searchInput');
+        var searchResults = document.getElementById('searchResults');
+        if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

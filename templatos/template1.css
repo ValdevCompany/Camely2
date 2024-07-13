@@ -1,0 +1,9 @@
+.h11 {
+  text-align: center;
+  background-color: #007acc;
+  color: #fff;
+  padding: 10px;
+  margin: 0; /* Убираем внешние отступы заголовка */
+}
+
+
